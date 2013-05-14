@@ -1,0 +1,31 @@
+Brainfuck Interpreter and Compiler
+----------------------------------
+
+This package is distributed with an accompanying DISCLAIMER. If you
+don't intend to sue me, you probably don't have to read this file.
+
+Notes: The C source code is provided for reference. The binaries were
+built on a MinGW cross compiler. The code can be compiled in MSVC with some
+modifications.
+
+Interpretation Usage: 
+To interpret a .b file, say bottles.b, use: brainfuck bottles.b
+
+Compilation Usage:
+To compile the file, you require an assembler/linker along with it.
+
+bfx86 bottles.b will yield the assembly source file: bottles.b.s
+
+The .s file can compile with GNU as (part of MinGW on Windows) or with yasm.
+
+For MinGW/*nix(with gcc), use: gcc -o bottles bottles.b.s
+
+On *nix, you can also use the compile script shipped alongwith. use:
+compile bottles.b
+
+For MSVC, you require the yasm assembler:
+use: yasm -p gas -f win32 bottles.b.s -o bottles.obj
+     link -OUT:bottles.exe bottles.obj
+
+Then you can execute the appropriate file.
+
